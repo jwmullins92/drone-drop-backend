@@ -10,12 +10,16 @@ const UserModel = require("./models/User")
 app.use(express.json())
 app.use(cors())
 
-mongoose.connect(`mongodb+srv://my-user:${process.env.MONGO_PASSWORD}@cluster0.itbdo5l.mongodb.net/drone-drop?retryWrites=true&w=majority`, {
+mongoose.connect(`mongodb+srv://my-user:2aZiI6fXkCHzRkPt@cluster0.itbdo5l.mongodb.net/drone-drop?retryWrites=true&w=majority`, {
     useNewUrlParser: true
 })
 const db = mongoose.connection
 db.once('connected', () => {
     console.log('Database Connected');
+})
+
+app.get('/', async (req, res) => {
+    res.send("I'M WORKING")
 })
 
 app.get('/users', async (req, res) => {
