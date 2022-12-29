@@ -48,6 +48,15 @@ app.post('/user', async (req, res) => {
     }
 })
 
+app.delete('/user/:username', async (req, res) => {
+    try {
+        const user = await UserModel.findOneAndDelete({ username: req.params.username })
+        res.json(user)
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
+})
+
 
 
 app.listen(3001, () => {
